@@ -26,7 +26,7 @@ public class Hotel {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "hotel_id")
     private Set<Menu> menuList;
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(name = "hotel_delivery", joinColumns = @JoinColumn(name = "hotel_id"),
     inverseJoinColumns = @JoinColumn(name = "delivery_id"))
     private Set<Delivery> delivery;

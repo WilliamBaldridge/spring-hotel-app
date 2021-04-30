@@ -4,7 +4,9 @@ import com.hotelapp.models.Address;
 import com.hotelapp.models.Delivery;
 import com.hotelapp.models.Hotel;
 import com.hotelapp.models.Menu;
+import com.hotelapp.service.DeliveryService;
 import com.hotelapp.service.HotelService;
+import com.hotelapp.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -24,22 +26,59 @@ public class SpringHotelappRestapiApplication implements CommandLineRunner {
 
 	@Autowired
 	HotelService hotelService;
+	@Autowired
+	DeliveryService deliveryService;
+	@Autowired
+	MenuService menuService;
 
 	@Override
 	public void run(String... args) throws Exception {
 
-		Address address = new Address("123 Drive", "Orlando", 27648, "Florida");
+//		Address address = new Address("22222 9th St", "Austin", 27648, "Texas");
+//
+//		Menu menu1 = new Menu("Pizza", 25);
+//		Menu menu2 = new Menu("Alfredo", 15);
+//		Set<Menu> menuList = new HashSet<>(Arrays.asList(menu1, menu2));
+//
+//		Delivery del1 = deliveryService.getDeliveryByPartner("Uber");
+//		Set<Delivery> deliveryList = new HashSet<>(Arrays.asList(del1));
+//
+//		Hotel hotel = new Hotel("Hyatt", address, menuList, deliveryList);
+//		hotelService.addHotel(hotel);
 
-		Menu menu1 = new Menu("Hilton", 50);
-		Menu menu2 = new Menu("Steak", 40);
-		Set<Menu> menuList = new HashSet<>(Arrays.asList(menu1, menu2));
+//		Hotel hotel = hotelService.getHotelById(102);
+//		System.out.println(hotel);
+//
+//		hotel.getAddress().setCity("Miami");
+//		hotelService.updateHotel(hotel);
+//
+//		hotel = hotelService.getHotelById(102);
+//		System.out.println(hotel);
 
-		Delivery del1 = new Delivery("Hard Rock", 245);
-		Delivery del2 = new Delivery("Disney", 750);
-		Set<Delivery> deliveryList = new HashSet<>(Arrays.asList(del1, del2));
+//		hotelService.getHotelsByCity("Orlando")
+//				.stream()
+//				.forEach((h) -> System.out.println(h.getHotelName() + h.getAddress().getCity()));
+//		System.out.println();
+//		hotelService.getHotelsByLocation("Austin")
+//				.stream()
+//				.forEach((h) -> System.out.println(h.getHotelName() + h.getMenuList()));
 
-		Hotel hotel = new Hotel("Hilton", address, menuList, deliveryList);
-		hotelService.addHotel(hotel);
+
+//		hotelService.getHotelsByMenu("Lobster")
+//				.forEach((h) -> System.out.println(h.getHotelName() + " " + h.getAddress().getStreetName()));
+//		System.out.println();
+//		hotelService.getHotelsByDelivery("DoorDash")
+//				.forEach((h) -> System.out.println(h.getHotelName() + " " + h.getAddress().getStreetName()));
+
+//		hotelService.getHotelsByLocationAndMenu("555 6th St", "Pizza")
+//				.forEach((h) -> System.out.println(h.getHotelName() + " " + h.getAddress().getCity()));
+
+
+		menuService.getMenusByHotel("Hilton")
+				.forEach((m) -> System.out.println(m.getMenuName() + " " + m.getPrice()));
+
+
+
 	}
 
 }

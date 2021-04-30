@@ -10,5 +10,12 @@ import org.springframework.stereotype.Repository;
 public interface DeliveryRepository extends JpaRepository<Delivery, Integer> {
 
 
+    // Derived Queries
+
+    Delivery findByPartnerName(String partnerName);
+
+//    getBy/
+//
+//    readBy
 
 }
