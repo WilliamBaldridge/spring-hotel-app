@@ -74,8 +74,8 @@ public class SpringHotelappRestapiApplication implements CommandLineRunner {
 //				.forEach((h) -> System.out.println(h.getHotelName() + " " + h.getAddress().getCity()));
 
 
-		menuService.getMenusByHotel("Hilton")
-				.forEach((m) -> System.out.println(m.getMenuName() + " " + m.getPrice()));
+//		menuService.getMenusByHotel("Hilton")
+//				.forEach((m) -> System.out.println(m.getMenuName() + " " + m.getPrice()));
 
 
 
