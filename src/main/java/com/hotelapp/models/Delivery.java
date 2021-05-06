@@ -1,6 +1,7 @@
 package com.hotelapp.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,7 +25,8 @@ public class Delivery {
     private String partnerName;
     private double charges;
     @ManyToMany(mappedBy = "delivery")
-    @JsonIgnore // prevents recursive JSON retrieval/printing because connection between 2 classes
+//    @JsonIgnore // prevents recursive JSON retrieval/printing because connection between 2 classes
+    @JsonBackReference // prevents recursive JSON retrieval/printing because connection between 2 classes
     private Set<Hotel> hotelList = new HashSet<>();
 
     public Delivery(String partnerName, double charges) {

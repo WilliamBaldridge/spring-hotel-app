@@ -2,6 +2,7 @@ package com.hotelapp.models;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,10 +27,12 @@ public class Hotel {
     private Address address;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "hotel_id")
+    @JsonManagedReference // Used to prevent recursive JSON
     private Set<Menu> menuList;
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(name = "hotel_delivery", joinColumns = @JoinColumn(name = "hotel_id"),
     inverseJoinColumns = @JoinColumn(name = "delivery_id"))
+    @JsonManagedReference
     private Set<Delivery> delivery;
 
     public Hotel(String hotelName, Address address, Set<Menu> menuList, Set<Delivery> delivery) {

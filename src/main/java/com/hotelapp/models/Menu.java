@@ -1,5 +1,6 @@
 package com.hotelapp.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,8 @@ public class Menu {
     private double price;
     @ManyToOne
     @JoinColumn(name = "hotel_id")
-    @JsonIgnore // will prevent stackoverflow when printing JSON by looping hotels because has connection between these 2 classes
+//    @JsonIgnore // will prevent stackoverflow when printing JSON by looping hotels because has connection between these 2 classes
+    @JsonBackReference // will prevent stackoverflow when printing JSON by looping hotels because has connection between these 2 classes
     private Hotel hotel;
 
 
